@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORNO — Wood-Fired Neapolitan Pizzeria</title>
+<meta name="description" content="FORNO — Neapolitan pizza, stone-baked at 900°F. 48-hour fermented dough, live fire, no shortcuts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Expanded:wght@700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loader" id="loader">
+  <div class="loader-oven">
+    <div class="loader-flame"></div>
+  </div>
+  <p class="loader-text">FIRING THE OVEN…</p>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-check-circle"></i>
+  <span id="toast-message">Message sent.</span>
+</div>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#home" class="logo">FORNO<span class="logo-dot">.</span></a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#story" class="nav-link">Story</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#reserve" class="nav-link">Reserve</a>
+    </nav>
+
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <a href="#reserve" class="btn btn-small btn-amber">Book a Table</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <nav>
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#menu" class="mobile-nav-link">Menu</a>
+    <a href="#process" class="mobile-nav-link">Process</a>
+    <a href="#story" class="mobile-nav-link">Story</a>
+    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#faq" class="mobile-nav-link">FAQ</a>
+    <a href="#reserve" class="mobile-nav-link">Reserve</a>
+  </nav>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <canvas id="emberCanvas" class="ember-canvas"></canvas>
+    <div class="hero-glow"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">Naples-trained · Since 2014 · One Oven, No Shortcuts</p>
+      <h1 class="hero-title">
+        <span class="reveal">WOOD-FIRED.</span>
+        <span class="reveal" style="animation-delay:.12s">STONE-BAKED.</span>
+        <span class="reveal hero-title-accent" style="animation-delay:.24s">BORN AT 900°F.</span>
+      </h1>
+      <p class="hero-sub reveal" style="animation-delay:.36s">Forty-eight-hour fermented dough. A single oak-fed oven. Pizza the way it was made before it had opinions.</p>
+      <div class="hero-actions reveal" style="animation-delay:.48s">
+        <a href="#reserve" class="btn btn-amber btn-lg">Reserve a Table</a>
+        <a href="#menu" class="btn btn-outline btn-lg">View the Menu <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <a href="#stats" class="scroll-cue" aria-label="Scroll down">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="container stats-grid">
+      <div class="stat reveal">
+        <span class="stat-number" data-count="900" data-suffix="°F">0</span>
+        <span class="stat-label">Oven Floor Temp</span>
+      </div>
+      <div class="stat reveal" style="animation-delay:.1s">
+        <span class="stat-number" data-count="48" data-suffix="hrs">0</span>
+        <span class="stat-label">Dough Fermentation</span>
+      </div>
+      <div class="stat reveal" style="animation-delay:.2s">
+        <span class="stat-number" data-count="90" data-suffix="s">0</span>
+        <span class="stat-label">Bake Time Per Pie</span>
+      </div>
+      <div class="stat reveal" style="animation-delay:.3s">
+        <span class="stat-number" data-count="112000" data-suffix="+">0</span>
+        <span class="stat-label">Pizzas Served</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <p class="section-eyebrow reveal">The Menu</p>
+      <h2 class="section-title reveal">Everything comes out of one oven.</h2>
+
+      <div class="menu-filters reveal" role="tablist" aria-label="Menu categories">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pizze">Pizze</button>
+        <button class="filter-btn" data-filter="antipasti">Antipasti</button>
+        <button class="filter-btn" data-filter="dolci">Dolci</button>
+        <button class="filter-btn" data-filter="vino">Vino</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+
+        <article class="menu-card reveal" data-category="pizze">
+          <div class="menu-card-top">
+            <span class="menu-card-num">01</span>
+            <span class="menu-card-price">$19</span>
+          </div>
+          <h3>Margherita DOP</h3>
+          <p>San Marzano tomato, fior di latte, basil, Sicilian olive oil.</p>
+          <span class="menu-tag">Classic</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="pizze">
+          <div class="menu-card-top">
+            <span class="menu-card-num">02</span>
+            <span class="menu-card-price">$23</span>
+          </div>
+          <h3>Nduja &amp; Honey</h3>
+          <p>Calabrian nduja, stracciatella, hot honey, chili oil.</p>
+          <span class="menu-tag menu-tag-hot">Spicy</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="pizze">
+          <div class="menu-card-top">
+            <span class="menu-card-num">03</span>
+            <span class="menu-card-price">$21</span>
+          </div>
+          <h3>Funghi di Bosco</h3>
+          <p>Wild mushroom, taleggio, thyme, roasted garlic cream.</p>
+          <span class="menu-tag">House Favorite</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="pizze">
+          <div class="menu-card-top">
+            <span class="menu-card-num">04</span>
+            <span class="menu-card-price">$25</span>
+          </div>
+          <h3>Salsiccia e Broccolini</h3>
+          <p>Fennel sausage, charred broccolini, provolone, chili flake.</p>
+          <span class="menu-tag">Chef's Pick</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="antipasti">
+          <div class="menu-card-top">
+            <span class="menu-card-num">05</span>
+            <span class="menu-card-price">$14</span>
+          </div>
+          <h3>Burrata al Forno</h3>
+          <p>Blistered burrata, cherry tomato, charred bread, basil oil.</p>
+          <span class="menu-tag">Vegetarian</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="antipasti">
+          <div class="menu-card-top">
+            <span class="menu-card-num">06</span>
+            <span class="menu-card-price">$16</span>
+          </div>
+          <h3>Polpo alla Brace</h3>
+          <p>Grilled octopus, white bean puree, salsa verde, lemon.</p>
+          <span class="menu-tag">Gluten Free</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="dolci">
+          <div class="menu-card-top">
+            <span class="menu-card-num">07</span>
+            <span class="menu-card-price">$11</span>
+          </div>
+          <h3>Torta di Nocciola</h3>
+          <p>Hazelnut cake, mascarpone, espresso crumble.</p>
+          <span class="menu-tag">Vegetarian</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="dolci">
+          <div class="menu-card-top">
+            <span class="menu-card-num">08</span>
+            <span class="menu-card-price">$10</span>
+          </div>
+          <h3>Affogato al Forno</h3>
+          <p>Fior di latte gelato, hot espresso, cocoa nib.</p>
+          <span class="menu-tag">Guest Favorite</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="vino">
+          <div class="menu-card-top">
+            <span class="menu-card-num">09</span>
+            <span class="menu-card-price">$14</span>
+          </div>
+          <h3>Aglianico, Campania</h3>
+          <p>Dark fruit, smoke, soft tannin. Built for the oven.</p>
+          <span class="menu-tag">By the Glass</span>
+        </article>
+
+        <article class="menu-card reveal" data-category="vino">
+          <div class="menu-card-top">
+            <span class="menu-card-num">10</span>
+            <span class="menu-card-price">$13</span>
+          </div>
+          <h3>Falanghina, Sannio</h3>
+          <p>Citrus, stone fruit, salt air. Crisp against char.</p>
+          <span class="menu-tag">By the Glass</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <p class="section-eyebrow reveal light">The Process</p>
+      <h2 class="section-title reveal light">Four stages. Zero shortcuts.</h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <span class="timeline-num">01</span>
+          <div class="timeline-content">
+            <h3>Impasto</h3>
+            <p>Flour, water, salt, and wild starter, mixed slow to protect the gluten structure.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" style="animation-delay:.1s">
+          <span class="timeline-num">02</span>
+          <div class="timeline-content">
+            <h3>Riposo</h3>
+            <p>48 hours cold-fermenting. This is where the flavor is actually made.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" style="animation-delay:.2s">
+          <span class="timeline-num">03</span>
+          <div class="timeline-content">
+            <h3>Stesa</h3>
+            <p>Hand-stretched to order — never rolled, never rested twice.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" style="animation-delay:.3s">
+          <span class="timeline-num">04</span>
+          <div class="timeline-content">
+            <h3>Forno</h3>
+            <p>90 seconds at 900°F in an oak-fed dome. Leopard-spotted, never burnt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="container story-grid">
+      <div class="story-image reveal">
+        <div class="story-image-box"></div>
+      </div>
+      <div class="story-content reveal">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title">One family, one oven, one recipe worth defending.</h2>
+        <p>FORNO started in 2014 in the back corner of a rented kitchen, with a single oven and a dough recipe carried over from three generations in Naples. We never expanded the menu to chase trends — we narrowed it, until every plate earned its place.</p>
+        <p>Today the oven is bigger. The recipe hasn't changed.</p>
+        <a href="#reserve" class="btn btn-amber">Reserve a Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="section-eyebrow reveal">What People Say</p>
+      <h2 class="section-title reveal">No stars, just word of mouth.</h2>
+
+      <div class="testimonial-slider reveal">
+        <button class="slider-arrow slider-prev" id="prevTestimonial" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">"The Nduja &amp; Honey pizza rearranged my expectations of what a slice can do. I've been back four times this month."</p>
+            <p class="testimonial-author">— Priya Menon, regular since 2021</p>
+          </div>
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">"You can taste the 48 hours. Most places skip that part and it shows. This place doesn't skip anything."</p>
+            <p class="testimonial-author">— Daniel Osei, food writer</p>
+          </div>
+          <div class="testimonial-slide">
+            <p class="testimonial-quote">"Brought my whole family for a Sunday dinner and left planning the next visit before we'd even paid the bill."</p>
+            <p class="testimonial-author">— Maria Lucchesi, first-time guest</p>
+          </div>
+        </div>
+
+        <button class="slider-arrow slider-next" id="nextTestimonial" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <p class="section-eyebrow reveal">Inside the Kitchen</p>
+      <h2 class="section-title reveal">A look at the oven's day.</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal gallery-tall"><div class="gallery-fill">Dough on the bench</div></div>
+        <div class="gallery-item reveal"><div class="gallery-fill">The oak fire</div></div>
+        <div class="gallery-item reveal"><div class="gallery-fill">Fresh basil, cut to order</div></div>
+        <div class="gallery-item reveal"><div class="gallery-fill">The pass at 7pm</div></div>
+        <div class="gallery-item reveal gallery-tall"><div class="gallery-fill">Leopard-spotted crust</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container faq-container">
+      <p class="section-eyebrow reveal">Questions</p>
+      <h2 class="section-title reveal">Before you book.</h2>
+
+      <div class="accordion">
+        <div class="accordion-item reveal">
+          <button class="accordion-header">
+            <span>Do you take walk-ins?</span>
+            <i class="fa-solid fa-plus accordion-icon"></i>
+          </button>
+          <div class="accordion-body">
+            <p>Yes — we hold a few tables nightly for walk-ins, but reservations are strongly recommended on weekends when we're usually full by 6:30pm.</p>
+          </div>
+        </div>
+        <div class="accordion-item reveal">
+          <button class="accordion-header">
+            <span>Is there a gluten-free crust?</span>
+            <i class="fa-solid fa-plus accordion-icon"></i>
+          </button>
+          <div class="accordion-body">
+            <p>We offer a gluten-free dough made in a separate prep area, though our kitchen isn't fully gluten-free, so cross-contact is possible.</p>
+          </div>
+        </div>
+        <div class="accordion-item reveal">
+          <button class="accordion-header">
+            <span>Can you host large parties?</span>
+            <i class="fa-solid fa-plus accordion-icon"></i>
+          </button>
+          <div class="accordion-body">
+            <p>Groups of up to 12 can be seated with advance notice. For anything larger, email us and we'll set up a private oven-side menu.</p>
+          </div>
+        </div>
+        <div class="accordion-item reveal">
+          <button class="accordion-header">
+            <span>Do you deliver or offer takeout?</span>
+            <i class="fa-solid fa-plus accordion-icon"></i>
+          </button>
+          <div class="accordion-body">
+            <p>Takeout only, ordered by phone. We don't offer delivery — the 90 seconds it takes to come out of the oven is the whole point.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVE / CONTACT -->
+  <section class="reserve" id="reserve">
+    <div class="container reserve-grid">
+      <div class="reserve-info reveal">
+        <p class="section-eyebrow light">Reserve</p>
+        <h2 class="section-title light">Get a table by the oven.</h2>
+        <p class="reserve-text">Fill out the form and we'll confirm within a few hours. For same-day requests, call us directly.</p>
+
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i> 214 Ember Lane, Portland, OR</li>
+          <li><i class="fa-solid fa-phone"></i> (503) 555-0142</li>
+          <li><i class="fa-solid fa-envelope"></i> hello@forno-pizzeria.example</li>
+          <li><i class="fa-solid fa-clock"></i> Tue–Sun, 5:00pm – 11:00pm</li>
+        </ul>
+      </div>
+
+      <form class="reserve-form reveal" id="reserveForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            <span class="form-error" id="error-name"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            <span class="form-error" id="error-email"></span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+            <span class="form-error" id="error-date"></span>
+          </div>
+          <div class="form-group">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests" required>
+              <option value="">Select</option>
+              <option value="1-2">1–2</option>
+              <option value="3-4">3–4</option>
+              <option value="5-8">5–8</option>
+              <option value="9+">9+</option>
+            </select>
+            <span class="form-error" id="error-guests"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Notes (optional)</label>
+          <textarea id="message" name="message" rows="3" placeholder="Allergies, occasions, seating preferences…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-amber btn-lg btn-full">
+          <span class="btn-text">Request Reservation</span>
+          <span class="btn-spinner"></span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#home" class="logo">FORNO<span class="logo-dot">.</span></a>
+      <p>Wood-fired Neapolitan pizza. One oven, no shortcuts, since 2014.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" aria-label="Yelp"><i class="fa-brands fa-yelp"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#menu">Menu</a>
+      <a href="#process">Process</a>
+      <a href="#story">Story</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <a href="#reserve">Reservations</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer-col footer-newsletter">
+      <h4>Stay in the Loop</h4>
+      <p>Menu drops, oven news, the occasional secret pizza night.</p>
+      <form id="newsletterForm" class="newsletter-form">
+        <input type="email" placeholder="Your email" aria-label="Email for newsletter" required>
+        <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>&copy; 2026 FORNO Pizzeria. All rights reserved.</p>
+    <p>Built with fire, flour, and patience.</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
