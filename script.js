@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------------------------------------------------
-     Reservation Form Validation
+     ReservationForm Validation
   --------------------------------------------------- */
   const reserveForm = document.getElementById('reserveForm');
 
